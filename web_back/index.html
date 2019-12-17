@@ -113,7 +113,9 @@
             }
         }
     </script>
+    <script src="./tools/gdz.js"></script>
     <script src="./tools/user.js"></script>
+
     <script>
         /*
         退出功能：
@@ -135,6 +137,27 @@
                     location.href = './login.html'
                 }
             })
+        })
+    </script>
+    <script>
+        // user.gitUser({
+        //     //左侧和顶部右侧的img，进行头像设置
+        //     success: function (res) {
+        //       
+        //     }
+        // })
+        $.ajax({
+
+            url: GIT_USER,
+            success: function (res) {
+                console.log(res);
+
+                if (res.code === 200) {
+                    $('.user_info img,.user_conter_link img').prop('src', res.user_pic)
+                    $('.user_info span').test('欢迎  ' + res.nickname)
+                }
+            }
+
         })
     </script>
 </body>
