@@ -113,32 +113,28 @@
             }
         }
     </script>
-
+    <script src="./tools/user.js"></script>
     <script>
+        /*
+        退出功能：
+        1.点击退出按钮
+        2.确认是否退出
+        3.如果确定，请求接口进行退出操作
+        4.跳转到登录页面
+      
+        */
+        //1.1注册点击事件
         $('.btn').on('click', function () {
+            //询问用户是否确定退出
             if (!confirm('你确定要退出吗?')) {
                 return;
             }
-            $.ajax({
-                type: 'post',
-                url: TC,
+            user.logout({
+                //退出成功，跳转到登录页面
                 success: function (res) {
-
-                    if (res.code === 200) {
-                        location.href = './login.html'
-                    } else {
-                        alert('网络不好')
-                    }
-
-
+                    location.href = './login.html'
                 }
-
-            });
-
-
-
-
-
+            })
         })
     </script>
 </body>
